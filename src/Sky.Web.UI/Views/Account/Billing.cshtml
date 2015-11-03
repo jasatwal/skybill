@@ -1,0 +1,120 @@
+﻿
+@{
+    ViewBag.Title = "Billing";
+}
+
+<h2>Billing</h2>
+
+<div ng-controller="App.Account.Billing.Controllers.OverviewController">
+    <section class="bill-overview">
+        <canvas id="myChart" width="400" height="400" overview-chart="overviewChartData"></canvas>
+        <dl>
+            <dt>Sub total</dt>
+            <dd>{{bill.SubTotal}}</dd>
+            <dt>Adjustment</dt>
+            <dd>{{bill.Adjustment}}</dd>
+            <dt>Total</dt>
+            <dd>{{bill.Total}}</dd>
+        </dl>
+        <div class="clearfix"></div>
+    </section>
+    <hr />
+    <section class="bill-subscription-charges" ng-show="bill.Tv">
+        <h2>{{bill.Tv.Name}}</h2>
+        <section>
+            <h3>Sky Store</h3>
+            <section>
+                <h3>Rentals</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="movie in bill.Tv.Rentals">
+                            <td>{{movie.Title}}</td>
+                            <td>{{movie.Cost}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section>
+                <h3>Buy and keep</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="movie in bill.Tv.BuyAndKeep">
+                            <td>{{movie.Title}}</td>
+                            <td>{{movie.Cost}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </section>
+        <section class="bill-subscription-summary">
+            <h3>Summary</h3>
+            <dl>
+                <dt>Total</dt>
+                <dd>{{bill.Tv.Total}}</dd>
+            </dl>
+            <div class="clearfix"></div>
+        </section>
+    </section>
+    <hr />
+    <section class="bill-subscription-charges" ng-show="bill.Talk">
+        <h2>{{bill.Talk.Name}}</h2>
+        <section>
+            <h3>Call Charges</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Number</th>
+                        <th>Duration</th>
+                        <th>Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="call in bill.Talk.Charges">
+                        <td>{{call.Number}}</td>
+                        <td>{{call.Duration}}</td>
+                        <td>{{call.Cost}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="bill-subscription-summary">
+            <h3>Summary</h3>
+            <dl>
+                <dt>Total</dt>
+                <dd>{{bill.Talk.Total}}</dd>
+            </dl>
+            <div class="clearfix"></div>
+        </section>
+    </section>
+    <hr />
+    <section class="bill-subscription-charges" ng-show="bill.Broadband">
+        <h2>{{bill.Broadband.Name}}</h2>
+        <section class="bill-subscription-summary">
+            <h3>Summary</h3>
+            <dl>
+                <dt>Total</dt>
+                <dd>{{bill.Tv.Total}}</dd>
+            </dl>
+            <div class="clearfix"></div>
+        </section>
+    </section>
+</div>
+
+
+@section scripts {
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/account/billing")
+}
+
