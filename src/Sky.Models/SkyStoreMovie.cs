@@ -1,6 +1,8 @@
-﻿namespace Sky
+﻿using System.Collections.Generic;
+
+namespace Sky
 {
-    public class SkyStoreMovie
+    public class SkyStoreMovie : ValueObject
     {
         private readonly string title;
 
@@ -14,6 +16,11 @@
             Check.Argument.IsNotNull(title, nameof(title));
 
             this.title = title;
+        }
+
+        protected override IEnumerable<object> GetEqualityComponents()
+        {
+            yield return title;
         }
     }
 }

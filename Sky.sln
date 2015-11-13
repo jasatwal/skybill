@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sky.Infrastructure", "src\S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sky.Infrastructure.Billing.Tests", "test\Sky.Infrastructure.Billing.Tests\Sky.Infrastructure.Billing.Tests.csproj", "{D5C2410F-13FE-471C-8AB4-28482B056652}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sky.Web", "src\Sky.Web\Sky.Web.csproj", "{92197F76-006F-4DE0-8B32-5040A2EBAE54}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{D5C2410F-13FE-471C-8AB4-28482B056652}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5C2410F-13FE-471C-8AB4-28482B056652}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5C2410F-13FE-471C-8AB4-28482B056652}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92197F76-006F-4DE0-8B32-5040A2EBAE54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92197F76-006F-4DE0-8B32-5040A2EBAE54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92197F76-006F-4DE0-8B32-5040A2EBAE54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92197F76-006F-4DE0-8B32-5040A2EBAE54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,5 +73,6 @@ Global
 		{37D3E109-53CC-426B-89B9-22A1747919A6} = {433F9AE9-A4C3-43C4-AF6E-D07A2FFE5536}
 		{3F3A0A3F-5163-49C7-896F-051959FB6D40} = {433F9AE9-A4C3-43C4-AF6E-D07A2FFE5536}
 		{D5C2410F-13FE-471C-8AB4-28482B056652} = {B837E238-1618-4E8D-830A-633CFA058E74}
+		{92197F76-006F-4DE0-8B32-5040A2EBAE54} = {433F9AE9-A4C3-43C4-AF6E-D07A2FFE5536}
 	EndGlobalSection
 EndGlobal

@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Sky
+﻿namespace Sky.Billing
 {
-    public class BillSummary
+    public class BillCostings
     {
         private readonly Money subTotal;
         private readonly Money adjustment;
@@ -27,7 +21,7 @@ namespace Sky
             get { return total; }
         }
 
-        public BillSummary(Money subTotal, Money total)
+        public BillCostings(Money subTotal, Money total)
         {
             Check.Argument.IsNotNull(subTotal, nameof(subTotal));
             Check.Argument.IsNotNull(total, nameof(total));

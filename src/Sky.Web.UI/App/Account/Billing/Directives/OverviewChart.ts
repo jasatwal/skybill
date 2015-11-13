@@ -1,6 +1,15 @@
 ﻿module App.Account.Billing.Directives {
+    // Don't have DefinatelyType file for Morris.js
+    declare var Morris: any;  
+
+    export interface IOverviewChart {
+        name: string;
+        data: Array<any>;
+        formatter?: (value: any) => any;
+    }
+
     interface IOverviewChartScope extends ng.IScope {
-        overviewChart: Array<CircularChartData>;
+        overviewChart: IOverviewChart;
     }
 
     export function overviewChart(): ng.IDirective {
@@ -9,10 +18,13 @@
                 overviewChart: "="
             },
             link: (scope: IOverviewChartScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes) => {
-                scope.$watch("overviewChart", (newVal: Array<CircularChartData>, oldVal: Array<CircularChartData>, scope: ng.IScope) => {
+                scope.$watch("overviewChart", (newVal: IOverviewChart, oldVal: IOverviewChart, scope: ng.IScope) => {
                     if (newVal) {
-                        var ctx = (<HTMLCanvasElement>element.get(0)).getContext("2d");
-                        var chart = new Chart(ctx).Doughnut(newVal);
+                        var chart = Morris.Donut({
+                            element: element.get(0),
+                            data: newVal.data,
+                            formatter: newVal.formatter 
+                        });
                     }
                 });
             }

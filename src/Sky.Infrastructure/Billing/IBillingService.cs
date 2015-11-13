@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
-namespace Sky.Infrastructure.Billing
+namespace Sky.Billing
 {
     public interface IBillingService
     {
-        Task<CustomerBill> Find(CustomerAccountNumber customer);
+        Task<Bill> Find(CustomerAccountNumber customer);
     }
 }

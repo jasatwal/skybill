@@ -33,10 +33,10 @@ namespace Sky
                     throw new ArgumentException("Cannot contain non-numerical characters.", paramName);
             }
 
-            public static void AtLeastOneIsNotNull(string message, params object[] args)
+            public static void ArrayLenghtIsNotZero<T>(IEnumerable<T> arg, string paramName)
             {
-                if (args.All(x => x == null))
-                    throw new ArgumentNullException(message);
+                if (!arg.Any())
+                    throw new ArgumentException("Array cannot be empty.", paramName);
             }
 
             [DebuggerStepThrough]

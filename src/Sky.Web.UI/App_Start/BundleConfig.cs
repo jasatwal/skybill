@@ -31,8 +31,13 @@ namespace Sky.Web.UI
                 "~/Content/bootstrap.css",
                 "~/Content/site.css"));
 
-            bundles.Add(new ScriptBundle("~/bundles/account/billing").Include(
-                "~/Scripts/Chart.js",
+            bundles.Add(new StyleBundle("~/bundles/account/billing/css").Include(
+                "~/Content/morris.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/account/billing/js").Include(
+                "~/Scripts/raphael.js",
+                "~/Scripts/morris.js",
+                "~/App/Account/Billing/Filters/*.js",
                 "~/App/Account/Billing/Directives/*.js",
                 "~/App/Account/Billing/Controllers/*.js",
                 "~/App/Account/Billing/App.js"));

@@ -1,6 +1,6 @@
 ﻿namespace Sky
 {
-    public interface IBillItem
+    public interface ICost
     {
         Money Cost { get; }
     }

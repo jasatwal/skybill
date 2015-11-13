@@ -1,11 +1,14 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
-namespace Sky.Web.UI
+namespace Sky.Web.Mvc
 {
     public class JsonNetResult : JsonResult
     {
+        public JsonConverter[] Converters { get; set; }
+
         public override void ExecuteResult(ControllerContext context)
         {
             if (context == null)
@@ -23,7 +26,7 @@ namespace Sky.Web.UI
             if (Data == null)
                 return;
 
-            response.Write(JsonConvert.SerializeObject(Data));
+            response.Write(JsonConvert.SerializeObject(Data, Converters));
         }
     }
 }

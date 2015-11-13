@@ -6,16 +6,21 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Sky.Billing;
+using Sky.Web.Mvc;
+using System.Collections.Generic;
 
 namespace Sky.Web.UI.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : SkyController
     {
+        private readonly JsonConverter[] jsonConverters;
         private readonly IBillingService billingService;
 
-        public AccountController(IBillingService billingService)
+        public AccountController(JsonConverter[] jsonConverters, IBillingService billingService)
         {
+            this.jsonConverters = jsonConverters;
             this.billingService = billingService;
         }
 
@@ -57,10 +62,13 @@ namespace Sky.Web.UI.Controllers
         {
             var accountNumber = new CustomerAccountNumber(ClaimsPrincipal.Current.FindFirst("AccountNumber").Value);
             var bill = await billingService.Find(accountNumber);
+            var vm = new CustomerBillViewModel
+            {
+                Bill = bill,
+                CalledFrequency = bill.CallCharges.GetCalledFrequency()
+            };
 
-            var jsonResult = new JsonNetResult();
-            jsonResult.Data = new CustomerBillViewModel(bill);
-            return jsonResult;
+            return Json(vm, jsonConverters);
         }
     }
 }

@@ -28,3 +28,5 @@
 *.suo
 /.vs/config
 /packages
+/src/Sky.Web/bin/Debug
+/src/Sky.Web/obj/Debug

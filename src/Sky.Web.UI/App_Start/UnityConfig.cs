@@ -3,6 +3,8 @@ using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
 using Sky.Infrastructure.Billing;
 using Sky.Infrastructure;
+using Sky.Billing;
+using Newtonsoft.Json;
 
 namespace Sky.Web.UI.App_Start
 {
@@ -34,9 +36,15 @@ namespace Sky.Web.UI.App_Start
         /// change the defaults), as Unity allows resolving a concrete type even if it was not previously registered.</remarks>
         public static void RegisterTypes(IUnityContainer container)
         {
-            container.RegisterType<IJsonClient, JsonClient>();
+            container.RegisterInstance<JsonConverter>("moneyJsonConverter", new JsonConverters.MoneyJsonConverter());
+            container.RegisterInstance<JsonConverter>("telephoneNumberJsonConverter", new JsonConverters.TelephoneNumberJsonConverter());
+            container.RegisterInstance<JsonConverter>("skyStoreMovieJsonConverter", new JsonConverters.SkyStoreMovieJsonConverter());
+            container.RegisterType<IHttpClient, HttpClient>();
             container.RegisterType<IBillingService, BillingService>(
-                new InjectionConstructor(new ResolvedParameter<IJsonClient>(), @"http://safe-plains-5453.herokuapp.com/bill.json"));
+                new InjectionConstructor(
+                    new ResolvedParameter<IHttpClient>(),
+                    new ResolvedParameter<JsonConverter[]>(),
+                    @"http://safe-plains-5453.herokuapp.com/bill.json"));
         }
     }
 }

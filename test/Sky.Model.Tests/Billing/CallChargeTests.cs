@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace Sky
+namespace Sky.Billing
 {
     [TestClass]
     public class CallChargeTests

@@ -1,5 +1,10 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Sky;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Sky
 {
@@ -8,39 +13,29 @@ namespace Sky
     {
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void Ctor_NullTvTalkAndBroadbandSubscriptions_ShouldFail()
+        public void Ctor_NullSubscriptionsAndTotalArgs_ShouldFail()
         {
-            new Package(null, null, null, new Money(0M));
+            new PackageBill(null, null);
         }
 
         [TestMethod]
-        public void Ctor_NullTvAndTalk_ShouldPass()
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Ctor_NullSubscriptionsArg_ShouldFail()
         {
-            new Package(null, null, new Subscription("Broadband", new Money(10M)), new Money(0M));
+            new PackageBill(null, Money.Zero);
         }
 
         [TestMethod]
-        public void Ctor_NullTvAndBroadband_ShouldPass()
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Ctor_NullTotalArg_ShouldFail()
         {
-            new Package(null, new Subscription("Talk", new Money(10M)), null, new Money(0M));
+            new PackageBill(new[] { new Subscription("tv", "Variety with Movies HD", new Money(50M)) }, null);
         }
 
         [TestMethod]
-        public void Ctor_NullTalkAndBroadband_ShouldPass()
+        public void BreakdownTest()
         {
-            new Package(new Subscription("TV", new Money(10M)), null, null, new Money(0M));
-        }
-
-        [TestMethod]
-        public void Adjustment_PackageValue20AndTotalOf10_AdjustmentShouldBeNegative10()
-        {
-            var package = new Package(
-                new Subscription("TV", new Money(10M)),
-                new Subscription("Talk", new Money(5M)),
-                new Subscription("Broadband", new Money(5M)), 
-                new Money(10M));
-
-            Assert.AreEqual(new Money(-10M), package.Summary.Adjustment);
+            Assert.Fail();
         }
     }
 }

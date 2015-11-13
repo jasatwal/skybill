@@ -7,7 +7,7 @@
     <ProjectGuid>{3F3A0A3F-5163-49C7-896F-051959FB6D40}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Sky.Infrastructure</RootNamespace>
+    <RootNamespace>Sky</RootNamespace>
     <AssemblyName>Sky.Infrastructure</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Billing\IBillingService.cs" />
-    <Compile Include="IJsonClient.cs" />
+    <Compile Include="IHttpClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -2,15 +2,15 @@
 
 namespace Sky
 {
-    public class CallCharge : IBillItem
+    public class CallCharge : ICost
     {
-        private readonly TelephoneNumber number;
+        private readonly TelephoneNumber called;
         private readonly TimeSpan duration;
         private readonly Money cost;
 
-        public TelephoneNumber Number
+        public TelephoneNumber Called
         {
-            get { return number; }
+            get { return called; }
         }
 
         public TimeSpan Duration
@@ -23,12 +23,12 @@ namespace Sky
             get { return cost; }
         }
 
-        public CallCharge(TelephoneNumber number, TimeSpan duration, Money cost)
+        public CallCharge(TelephoneNumber called, TimeSpan duration, Money cost)
         {
-            Check.Argument.IsNotNull(number, nameof(number));
+            Check.Argument.IsNotNull(called, nameof(called));
             Check.Argument.IsNotNull(cost, nameof(cost));
 
-            this.number = number;
+            this.called = called;
             this.duration = duration;
             this.cost = cost;
         }

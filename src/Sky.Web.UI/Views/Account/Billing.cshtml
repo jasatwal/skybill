@@ -3,23 +3,115 @@
     ViewBag.Title = "Billing";
 }
 
-<h2>Billing</h2>
-
-<div ng-controller="App.Account.Billing.Controllers.OverviewController">
+<article ng-controller="App.Account.Billing.Controllers.OverviewController">
     <section class="bill-overview">
-        <canvas id="myChart" width="400" height="400" overview-chart="overviewChartData"></canvas>
+        <section ng-repeat="chart in overviewCharts">
+            <h3>{{chart.name}}</h3>
+            <div width="200" height="200" overview-chart="chart"></div>
+        </section>
         <dl>
             <dt>Sub total</dt>
-            <dd>{{bill.SubTotal}}</dd>
+            <dd>{{breakdown.Costings.SubTotal}}</dd>
             <dt>Adjustment</dt>
-            <dd>{{bill.Adjustment}}</dd>
-            <dt>Total</dt>
-            <dd>{{bill.Total}}</dd>
+            <dd>{{breakdown.Costings.Adjustment}}</dd>
+            <dt>Amount Due</dt>
+            <dd>{{breakdown.Costings.Total}}</dd>
         </dl>
         <div class="clearfix"></div>
     </section>
-    <hr />
-    <section class="bill-subscription-charges" ng-show="bill.Tv">
+
+    <section class="bill-statement">
+        <dl>
+            <dt>Bill date</dt>
+            <dd>{{breakdown.Statement.Generated | date:"dd MMM yyyy"}}</dd>
+            <dt>Period</dt>
+            <dd>{{breakdown.Statement.Period.From | date:"dd MMM"}} - {{breakdown.Statement.Period.To | date:"dd MMM"}}</dd>
+            <dt>Payment due date</dt>
+            <dd>{{breakdown.Statement.Due | date:"dd MMM"}}</dd>
+        </dl>
+    </section>
+
+    <section class="bill-subscription-charges">
+        <h2>Subscription charges</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="subscription in breakdown.Package.Subscriptions">
+                    <td>{{subscription.Name}}</td>
+                    <td>{{subscription.Cost | costFilter}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="bill-subscription-charges">
+        <h2>Telephone usage charges</h2>
+        <section>
+            <dl>
+                <dt>Total</dt>
+                <dd>{{breakdown.CallCharges.Costings.Total}}</dd>
+            </dl>
+
+            <table class="table bill-costings">
+                <tbody>
+                    <tr>
+                        <th>Total</th>
+                        <td>{{breakdown.CallCharges.Costings.Total}}</td>
+                    </tr>
+                    <tr>
+                        <th>Call charges</th>
+                        <td>{{breakdown.CallCharges.Costings.SubTotal}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Duration</th>
+                    <th>Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="call in breakdown.CallCharges.Calls">
+                    <td>{{call.Called}}</td>
+                    <td>{{call.Duration}}</td>
+                    <td>{{call.Cost | costFilter}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <aside>
+            <div width="200" height="200" overview-chart="chart" ng-repeat="chart in callChargesCharts"></div>
+        </aside>
+    </section>
+
+    <section class="bill-subscription-charges" ng-repeat="chargeBreakdown in charges">
+        <h2>{{chargeBreakdown.Name}}</h2>
+        <section ng-repeat="cat in chargeBreakdown.Categories">
+            <h3>{{cat.Name}}</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th ng-repeat="(key, value) in cat.Charges[0]">{{key}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="charge in cat.Charges">
+                        <td ng-repeat="(key, value) in cat.Charges[0]">{{charge[key] | breakdownFilter}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <hr />
+    </section>
+
+    @*<section class="bill-subscription-charges" ng-show="bill.Tv">
         <h2>{{bill.Tv.Name}}</h2>
         <section>
             <h3>Sky Store</h3>
@@ -109,12 +201,15 @@
             </dl>
             <div class="clearfix"></div>
         </section>
-    </section>
-</div>
+    </section>*@
+</article>
 
+@section styles {
+    @Styles.Render("~/bundles/account/billing/css")
+}
 
 @section scripts {
     @Scripts.Render("~/bundles/angular")
-    @Scripts.Render("~/bundles/account/billing")
+    @Scripts.Render("~/bundles/account/billing/js")
 }
 

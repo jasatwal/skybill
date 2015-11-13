@@ -52,21 +52,30 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="CallChargesBillTests.cs" />
-    <Compile Include="CallChargeTests.cs" />
-    <Compile Include="CustomerBillTests.cs" />
+    <Compile Include="Billing\CallChargesStatisticsTests.cs" />
+    <Compile Include="Billing\CostingsBreakdownTests.cs" />
+    <Compile Include="Billing\CallChargesBillTests.cs" />
+    <Compile Include="Billing\CallChargeTests.cs" />
+    <Compile Include="Billing\CustomerBillTests.cs" />
+    <Compile Include="MoneyTests.cs" />
+    <Compile Include="PackageTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PeriodTests.cs" />
+    <Compile Include="SkyStoreMovieTests.cs" />
     <Compile Include="SubscriptionTests.cs" />
-    <Compile Include="PackageTests.cs" />
     <Compile Include="TelephoneNumberTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Sky.Core\Sky.Core.csproj">
+      <Project>{37d3e109-53cc-426b-89b9-22a1747919a6}</Project>
+      <Name>Sky.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\Sky.Models\Sky.Models.csproj">
       <Project>{6f4a1543-2f44-43d9-a96b-1c40229b2bcb}</Project>
       <Name>Sky.Models</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
