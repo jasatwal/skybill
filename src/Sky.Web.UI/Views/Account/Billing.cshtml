@@ -7,7 +7,7 @@
     <section class="bill-overview">
         <section ng-repeat="chart in overviewCharts">
             <h3>{{chart.name}}</h3>
-            <div width="200" height="200" overview-chart="chart"></div>
+            <div overview-chart="chart" class="chart"></div>
         </section>
         <dl>
             <dt>Sub total</dt>
@@ -31,64 +31,74 @@
         </dl>
     </section>
 
-    <section class="bill-subscription-charges">
-        <h2>Subscription charges</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Cost</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="subscription in breakdown.Package.Subscriptions">
-                    <td>{{subscription.Name}}</td>
-                    <td>{{subscription.Cost | costFilter}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
 
-    <section class="bill-subscription-charges">
-        <h2>Telephone usage charges</h2>
-        <section>
-            <dl>
-                <dt>Total</dt>
-                <dd>{{breakdown.CallCharges.Costings.Total}}</dd>
-            </dl>
-
-            <table class="table bill-costings">
-                <tbody>
-                    <tr>
-                        <th>Total</th>
-                        <td>{{breakdown.CallCharges.Costings.Total}}</td>
-                    </tr>
-                    <tr>
-                        <th>Call charges</th>
-                        <td>{{breakdown.CallCharges.Costings.SubTotal}}</td>
-                    </tr>
-                </tbody>
-            </table>
+    <section id="charges" class="panel-group" role="tablist" aria-multiselectable="true">
+        <section class="panel panel-default bill-subscription-charges">
+            <div class="panel-heading" role="tab" id="headerSubscriptionCharges">
+                <h2 class="panel-title">
+                    <a role="button" 
+                       href="#collapseSubscriptionCharges" 
+                       data-toggle="collapse" 
+                       data-parent="#charges" 
+                       aria-expanded="false" 
+                       aria-controls="collapseSubscriptionCharges">Subscription charges</a>
+                </h2>
+            </div>
+            <div id="collapseSubscriptionCharges" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headerSubscriptionCharges">
+                <div class="panel-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="subscription in breakdown.Package.Subscriptions">
+                                <td>{{subscription.Name}}</td>
+                                <td>{{subscription.Cost | costFilter}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </section>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Duration</th>
-                    <th>Cost</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="call in breakdown.CallCharges.Calls">
-                    <td>{{call.Called}}</td>
-                    <td>{{call.Duration}}</td>
-                    <td>{{call.Cost | costFilter}}</td>
-                </tr>
-            </tbody>
-        </table>
-        <aside>
-            <div width="200" height="200" overview-chart="chart" ng-repeat="chart in callChargesCharts"></div>
-        </aside>
+
+        <section class="panel panel-default bill-subscription-charges">
+            <div class="panel-heading" role="tab" id="headerTelephoneUsageCharges">
+                <h2 class="panel-title">
+                    <a role="button"
+                       href="#collapseTelephoneUsageCharges"
+                       data-toggle="collapse"
+                       data-parent="#charges"
+                       aria-expanded="true"
+                       aria-controls="collapseTelephoneUsageCharges">Telephone Usage charges</a>
+                </h2>
+            </div>
+            <div id="collapseTelephoneUsageCharges" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headerTelephoneUsageCharges">
+                <div class="panel-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Duration</th>
+                                <th>Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="call in breakdown.CallCharges.Calls">
+                                <td>{{call.Called}}</td>
+                                <td>{{call.Duration}}</td>
+                                <td>{{call.Cost | costFilter}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <aside>
+                        <div overview-chart="chart" ng-repeat="chart in callChargesCharts" class="chart"></div>
+                    </aside>
+                </div>
+            </div>
+        </section>
     </section>
 
     <section class="bill-subscription-charges" ng-repeat="chargeBreakdown in charges">
@@ -112,96 +122,96 @@
     </section>
 
     @*<section class="bill-subscription-charges" ng-show="bill.Tv">
-        <h2>{{bill.Tv.Name}}</h2>
-        <section>
-            <h3>Sky Store</h3>
+            <h2>{{bill.Tv.Name}}</h2>
             <section>
-                <h3>Rentals</h3>
+                <h3>Sky Store</h3>
+                <section>
+                    <h3>Rentals</h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="movie in bill.Tv.Rentals">
+                                <td>{{movie.Title}}</td>
+                                <td>{{movie.Cost}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                <section>
+                    <h3>Buy and keep</h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="movie in bill.Tv.BuyAndKeep">
+                                <td>{{movie.Title}}</td>
+                                <td>{{movie.Cost}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </section>
+            <section class="bill-subscription-summary">
+                <h3>Summary</h3>
+                <dl>
+                    <dt>Total</dt>
+                    <dd>{{bill.Tv.Total}}</dd>
+                </dl>
+                <div class="clearfix"></div>
+            </section>
+        </section>
+        <hr />
+        <section class="bill-subscription-charges" ng-show="bill.Talk">
+            <h2>{{bill.Talk.Name}}</h2>
+            <section>
+                <h3>Call Charges</h3>
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Title</th>
+                            <th>Number</th>
+                            <th>Duration</th>
                             <th>Cost</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="movie in bill.Tv.Rentals">
-                            <td>{{movie.Title}}</td>
-                            <td>{{movie.Cost}}</td>
+                        <tr ng-repeat="call in bill.Talk.Charges">
+                            <td>{{call.Number}}</td>
+                            <td>{{call.Duration}}</td>
+                            <td>{{call.Cost}}</td>
                         </tr>
                     </tbody>
                 </table>
             </section>
-            <section>
-                <h3>Buy and keep</h3>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Title</th>
-                            <th>Cost</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="movie in bill.Tv.BuyAndKeep">
-                            <td>{{movie.Title}}</td>
-                            <td>{{movie.Cost}}</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <section class="bill-subscription-summary">
+                <h3>Summary</h3>
+                <dl>
+                    <dt>Total</dt>
+                    <dd>{{bill.Talk.Total}}</dd>
+                </dl>
+                <div class="clearfix"></div>
             </section>
         </section>
-        <section class="bill-subscription-summary">
-            <h3>Summary</h3>
-            <dl>
-                <dt>Total</dt>
-                <dd>{{bill.Tv.Total}}</dd>
-            </dl>
-            <div class="clearfix"></div>
-        </section>
-    </section>
-    <hr />
-    <section class="bill-subscription-charges" ng-show="bill.Talk">
-        <h2>{{bill.Talk.Name}}</h2>
-        <section>
-            <h3>Call Charges</h3>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Number</th>
-                        <th>Duration</th>
-                        <th>Cost</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="call in bill.Talk.Charges">
-                        <td>{{call.Number}}</td>
-                        <td>{{call.Duration}}</td>
-                        <td>{{call.Cost}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-        <section class="bill-subscription-summary">
-            <h3>Summary</h3>
-            <dl>
-                <dt>Total</dt>
-                <dd>{{bill.Talk.Total}}</dd>
-            </dl>
-            <div class="clearfix"></div>
-        </section>
-    </section>
-    <hr />
-    <section class="bill-subscription-charges" ng-show="bill.Broadband">
-        <h2>{{bill.Broadband.Name}}</h2>
-        <section class="bill-subscription-summary">
-            <h3>Summary</h3>
-            <dl>
-                <dt>Total</dt>
-                <dd>{{bill.Broadband.Total}}</dd>
-            </dl>
-            <div class="clearfix"></div>
-        </section>
-    </section>*@
+        <hr />
+        <section class="bill-subscription-charges" ng-show="bill.Broadband">
+            <h2>{{bill.Broadband.Name}}</h2>
+            <section class="bill-subscription-summary">
+                <h3>Summary</h3>
+                <dl>
+                    <dt>Total</dt>
+                    <dd>{{bill.Broadband.Total}}</dd>
+                </dl>
+                <div class="clearfix"></div>
+            </section>
+        </section>*@
 </article>
 
 @section styles {
