@@ -30,3 +30,5 @@
 /packages
 /src/Sky.Web/bin/Debug
 /src/Sky.Web/obj/Debug
+/src/Sky.Web/bin/Release
+/src/Sky.Web/obj/Release
