@@ -1,5 +1,5 @@
 ﻿module App.Account.Billing.Directives {
-    // Don't have DefinatelyType file for Morris.js
+    // Don't have DefinatelyType file for Morris.js ;(
     declare var Morris: any;  
 
     export interface IMorrisChart {
@@ -12,13 +12,13 @@
         overviewChart: IMorrisChart;
     }
 
-    export function overviewChart(): ng.IDirective {
+    export function chart(): ng.IDirective {
         return {
             scope: {
-                overviewChart: "="
+                chart: "="
             },
             link: (scope: IOverviewChartScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes) => {
-                scope.$watch("overviewChart", (newVal: IMorrisChart, oldVal: IMorrisChart, scope: ng.IScope) => {
+                scope.$watch("chart", (newVal: IMorrisChart, oldVal: IMorrisChart, scope: ng.IScope) => {
                     if (newVal) {
                         var chart = Morris.Donut({
                             element: element.get(0),

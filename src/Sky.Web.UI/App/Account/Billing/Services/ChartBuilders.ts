@@ -3,6 +3,16 @@
         build(): Array<Directives.IMorrisChart>;
     }
 
+    export function moneyFormatter(value: any) {
+        if (value) {
+            if (typeof (value) == "number") {
+                return value.toFixed(2);
+            }
+        }
+
+        return value;
+    }
+
     export class PackageChartsBuilder implements IChartBuilder {
         constructor(private bill: Bill) {
         }
@@ -20,7 +30,8 @@
 
             return [{
                 name: "Subscriptions", 
-                data: data
+                data: data,
+                formatter: moneyFormatter
             }]
         }
     }

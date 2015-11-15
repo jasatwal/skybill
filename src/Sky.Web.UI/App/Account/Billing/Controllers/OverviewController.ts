@@ -13,8 +13,8 @@
 
             var me = this;
             billingService.getBillWithStatistics().then((value: Services.IBillWithStatistics) => {
+                $scope.bill = value.Bill;
                 $scope.billSections = me.buildBillSections(value);
-                console.log($scope.billSections);
             }, (reason: any) => {
                 // TODO: Handle errors.
             });

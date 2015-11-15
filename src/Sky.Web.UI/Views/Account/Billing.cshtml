@@ -6,19 +6,19 @@
     <section class="well bill-overview">
         <dl>
             <dt>Bill date</dt>
-            <dd>{{breakdown.Statement.Generated | date:"dd MMM yyyy"}}</dd>
+            <dd>{{bill.Statement.Generated | date:"dd MMM yyyy"}}</dd>
             <dt>Period</dt>
-            <dd>{{breakdown.Statement.Period.From | date:"dd MMM"}} - {{breakdown.Statement.Period.To | date:"dd MMM"}}</dd>
+            <dd>{{bill.Statement.Period.From | date:"dd MMM"}} - {{bill.Statement.Period.To | date:"dd MMM"}}</dd>
             <dt>Payment due date</dt>
-            <dd>{{breakdown.Statement.Due | date:"dd MMM"}}</dd>
+            <dd>{{bill.Statement.Due | date:"dd MMM"}}</dd>
         </dl>
         <dl>
             <dt>Sub total</dt>
-            <dd>{{breakdown.Costings.SubTotal}}</dd>
+            <dd>{{bill.Costings.SubTotal}}</dd>
             <dt>Adjustment</dt>
-            <dd>{{breakdown.Costings.Adjustment}}</dd>
+            <dd>{{bill.Costings.Adjustment}}</dd>
             <dt>Amount Due</dt>
-            <dd>{{breakdown.Costings.Total}}</dd>
+            <dd>{{bill.Costings.Total}}</dd>
         </dl>
         <div class="clearfix"></div>
     </section>
@@ -26,7 +26,7 @@
     <section class="bill-section" ng-repeat="section in billSections">
         <div class="bill-section-content">
             <h2 class="bill-section-title">{{section.name}}</h2>
-            <div ng-include src="section.template"></div>
+            <div ng-include="section.template"></div>
             <table class="table bill-section-costings">
                 <tbody>
                     <tr ng-show="section.costings.Adjustment > 0">
@@ -45,7 +45,7 @@
             </table>
         </div>
         <aside class="bill-section-sidebar">
-            <div overview-chart="chart" ng-repeat="chart in section.charts" class="chart"></div>
+            <div chart="chartConfig" ng-repeat="chartConfig in section.charts" class="chart"></div>
         </aside>
     </section>
 </article>

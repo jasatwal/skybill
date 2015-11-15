@@ -277,7 +277,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="App\Account\Billing\App.ts" />
     <TypeScriptCompile Include="App\Account\Billing\Controllers\OverviewController.ts" />
-    <TypeScriptCompile Include="App\Account\Billing\Directives\OverviewChart.ts" />
+    <TypeScriptCompile Include="App\Account\Billing\Directives\Chart.ts" />
     <TypeScriptCompile Include="App\Account\Billing\Interfaces.ts" />
     <TypeScriptCompile Include="App\Account\Billing\Filters\BreakdownFilter.ts" />
     <TypeScriptCompile Include="App\Account\Billing\Filters\CostFilter.ts" />
