@@ -202,7 +202,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\Account\CustomerBillViewModel.cs" />
+    <Compile Include="ViewModels\Account\BillWithStatisticsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -279,7 +279,6 @@
     <TypeScriptCompile Include="App\Account\Billing\Controllers\OverviewController.ts" />
     <TypeScriptCompile Include="App\Account\Billing\Directives\Chart.ts" />
     <TypeScriptCompile Include="App\Account\Billing\Interfaces.ts" />
-    <TypeScriptCompile Include="App\Account\Billing\Filters\BreakdownFilter.ts" />
     <TypeScriptCompile Include="App\Account\Billing\Filters\CostFilter.ts" />
     <TypeScriptCompile Include="App\Account\Billing\Services\BillingService.ts" />
     <TypeScriptCompile Include="App\Account\Billing\Services\BillSectionService.ts" />

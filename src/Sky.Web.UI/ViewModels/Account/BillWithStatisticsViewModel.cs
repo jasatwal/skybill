@@ -1,13 +1,13 @@
 ﻿using Sky.Billing;
-using System;
+using Sky.Billing.Statistics;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Sky.Web.UI.ViewModels.Account
 {
-    public class CustomerBillViewModel
+    public class BillWithStatisticsViewModel
     {
         public Bill Bill { get; set; }
         public IEnumerable<CalledFrequency> CalledFrequency { get; set; }
+        public IEnumerable<SkyStoreChargeValue> SkyStoreChargesValue { get; set; }
     }
 }

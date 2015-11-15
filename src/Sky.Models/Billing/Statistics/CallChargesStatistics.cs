@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Sky.Billing
+namespace Sky.Billing.Statistics
 {
     public class CallChargesStatistics
     {
@@ -20,14 +17,6 @@ namespace Sky.Billing
         public IEnumerable<CalledFrequency> GetCalledFrequency()
         {
             return bill.Calls.GroupBy(x => x.Called).Select(x => new CalledFrequency(x.Key, x.Count()));
-        }
-    }
-
-    public static class CallChargesStaticticsExtensions
-    {
-        public static IEnumerable<CalledFrequency> GetCalledFrequency(this CallChargesBill bill)
-        {
-            return new CallChargesStatistics(bill).GetCalledFrequency();
         }
     }
 
@@ -48,6 +37,8 @@ namespace Sky.Billing
 
         public CalledFrequency(TelephoneNumber number, int frequency)
         {
+            Check.Argument.IsNotNull(number, nameof(number));
+
             this.number = number;
             this.frequency = frequency;
         }

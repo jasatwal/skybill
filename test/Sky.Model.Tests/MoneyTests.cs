@@ -14,14 +14,14 @@ namespace Sky
         }
 
         [TestMethod]
-        public void Add_22Point47Add11Point9_ShouldBe34Point64()
+        public void Add_22Point47Add11Point9_ShouldBe34Point37()
         {
             var m1 = new Money(22.47M);
             var m2 = new Money(11.9M);
 
             var result = m1.Add(m2);
 
-            Assert.AreEqual(34.64M, result.Value);
+            Assert.AreEqual(34.37M, result.Value);
         }
 
         [TestMethod]

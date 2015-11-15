@@ -1,14 +1,13 @@
 ﻿using Microsoft.AspNet.Identity;
 using Newtonsoft.Json;
-using Sky.Infrastructure.Billing;
+using Sky.Billing;
+using Sky.Billing.Statistics;
+using Sky.Web.Mvc;
 using Sky.Web.UI.ViewModels.Account;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Sky.Billing;
-using Sky.Web.Mvc;
-using System.Collections.Generic;
 
 namespace Sky.Web.UI.Controllers
 {
@@ -58,14 +57,16 @@ namespace Sky.Web.UI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> GetBill()
+        public async Task<ActionResult> GetBillWithStatistics()
         {
             var accountNumber = new CustomerAccountNumber(ClaimsPrincipal.Current.FindFirst("AccountNumber").Value);
             var bill = await billingService.Find(accountNumber);
-            var vm = new CustomerBillViewModel
+
+            var vm = new BillWithStatisticsViewModel
             {
                 Bill = bill,
-                CalledFrequency = bill.CallCharges.GetCalledFrequency()
+                CalledFrequency = bill.CallCharges.GetCalledFrequency(),
+                SkyStoreChargesValue = bill.SkyStore.GetSkyStoreChargesValue()
             };
 
             return Json(vm, jsonConverters);

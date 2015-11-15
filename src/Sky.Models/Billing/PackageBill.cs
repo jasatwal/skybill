@@ -27,14 +27,5 @@ namespace Sky
 
             costings = new BillCostings(subscriptions.Sum(), total);
         }
-
-        //public ChargeBreakdown Breakdown()
-        //{
-        //    //return new PackageBreakdown(subscriptions, total);
-        //    return new ChargeBreakdown(
-        //        "Package",
-        //        total,
-        //        new ChargeBreakdownCategory("Subscriptions", subscriptions));
-        //}
     }
 }

@@ -23,18 +23,5 @@ namespace Sky
         {
             new Subscription("", "", new Money(10M));
         }
-
-        //[TestMethod]
-        //[ExpectedException(typeof(ArgumentException))]
-        //public void Ctor_WhiteSpaceName_ShouldFail()
-        //{
-        //    new Subscription(" ", new Money(10M));
-        //}
-
-        //[TestMethod]
-        //public void Ctor_ValidNameAndCost_ShouldPass()
-        //{
-        //    new Subscription("Family", new Money(10M));
-        //}
     }
 }

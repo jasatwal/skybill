@@ -1,4 +1,6 @@
 ﻿module App.Account.Billing {
+    // These interfaces are used for compile time checking, not actually required for the application to work.
+
     export interface IPeriod {
         To: Date;
         From: Date
@@ -56,29 +58,5 @@
         Package: IPackageBill;
         CallCharges: ICallChargesBill;
         SkyStore: ISkyStoreBill;
-    }
-
-    export interface ICostingsBreakdown {
-        SubTotal: number;
-        Adjustment: number;
-        Total: number;
-    }
-
-    export interface IChargeBreakdownCategory extends ICost {
-        Name: string;
-        Charges: Array<any>;
-    }
-
-    export interface IChargeBreakdown {
-        Name: string;
-        Categories: Array<IChargeBreakdownCategory>;
-        Costings: ICostingsBreakdown;
-    }
-
-    export interface IBreakdown {
-        Statement: IStatement;
-        Package: IChargeBreakdown;
-        Charges: Array<IChargeBreakdown>;
-        Costings: ICostingsBreakdown;
     }
 }

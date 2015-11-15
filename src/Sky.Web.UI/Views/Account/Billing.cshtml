@@ -3,24 +3,31 @@
 }
 
 <article ng-controller="App.Account.Billing.Controllers.OverviewController">
-    <section class="well bill-overview">
-        <dl>
-            <dt>Bill date</dt>
-            <dd>{{bill.Statement.Generated | date:"dd MMM yyyy"}}</dd>
-            <dt>Period</dt>
-            <dd>{{bill.Statement.Period.From | date:"dd MMM"}} - {{bill.Statement.Period.To | date:"dd MMM"}}</dd>
-            <dt>Payment due date</dt>
-            <dd>{{bill.Statement.Due | date:"dd MMM"}}</dd>
-        </dl>
-        <dl>
-            <dt>Sub total</dt>
-            <dd>{{bill.Costings.SubTotal}}</dd>
-            <dt>Adjustment</dt>
-            <dd>{{bill.Costings.Adjustment}}</dd>
-            <dt>Amount Due</dt>
-            <dd>{{bill.Costings.Total}}</dd>
-        </dl>
-        <div class="clearfix"></div>
+    <section class="well bill-section bill-overview">
+        <div class="bill-section-content">
+            <dl>
+                <dt>Bill date</dt>
+                <dd ng-bind="bill.Statement.Generated | date:'dd MMM yyyy'"></dd>
+            </dl>
+            <dl>
+                <dt>Period</dt>
+                <dd ng-bind-template="{{bill.Statement.Period.From | date:'dd MMM'}} - {{bill.Statement.Period.To | date:'dd MMM'}}"></dd>
+            </dl>
+            <dl>
+                <dt>Payment due date</dt>
+                <dd ng-bind="bill.Statement.Due | date:'dd MMM'"></dd>
+            </dl>
+        </div>
+        <aside class="bill-section-sidebar">
+            <dl>
+                <dt>Sub total</dt>
+                <dd ng-bind="bill.Costings.SubTotal"></dd>
+                <dt>Adjustment</dt>
+                <dd ng-bind="bill.Costings.Adjustment"></dd>
+                <dt class="important">Amount Due</dt>
+                <dd class="important" ng-bind="bill.Costings.Total"></dd>
+            </dl>
+        </aside>
     </section>
 
     <section class="bill-section" ng-repeat="section in billSections">

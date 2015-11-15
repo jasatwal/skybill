@@ -41,17 +41,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Billing\BillCostings.cs" />
-    <Compile Include="Billing\Breakdown.cs" />
-    <Compile Include="Billing\CallChargesStatistics.cs" />
+    <Compile Include="Billing\Statistics\CallChargesStatistics.cs" />
     <Compile Include="Billing\Statement.cs" />
-    <Compile Include="Billing\ChargeBreakdown.cs" />
-    <Compile Include="Billing\ChargeBreakdownCategory.cs" />
-    <Compile Include="Billing\CostingsBreakdown.cs" />
     <Compile Include="Billing\IBill.cs" />
     <Compile Include="Billing\Bill.cs" />
     <Compile Include="Billing\CallCharge.cs" />
     <Compile Include="Billing\CallChargesBill.cs" />
-    <Compile Include="Billing\IBreakdown.cs" />
+    <Compile Include="Billing\Statistics\Extensions.cs" />
+    <Compile Include="Billing\Statistics\SkyStoreStatistics.cs" />
     <Compile Include="CustomerAccountNumber.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="ICost.cs" />
@@ -59,7 +56,7 @@
     <Compile Include="Billing\PackageBill.cs" />
     <Compile Include="Period.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Billing\SkyStore.cs" />
+    <Compile Include="Billing\SkyStoreBill.cs" />
     <Compile Include="SkyStoreMovie.cs" />
     <Compile Include="Billing\SkyStorePurchase.cs" />
     <Compile Include="Subscription.cs" />

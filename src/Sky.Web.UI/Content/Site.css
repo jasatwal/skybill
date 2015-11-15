@@ -27,13 +27,8 @@ textarea {
     height: 230px;
 }
 
-.bill-overview canvas {
-    float: left;
-}
-
 .bill-overview dl {
-    float: left;
-    margin-left: 20px;
+    margin-bottom: 0;
 }
 
 .bill-overview dt {
@@ -44,6 +39,22 @@ textarea {
 
 .bill-overview dd {
     font-size: 2em;
+}
+
+.bill-overview dt.important,
+.bill-overview dd.important {
+    color: #fff !important;
+}
+
+.bill-overview .bill-section-content dl {
+    float: left;
+    margin-right: 50px;
+}
+
+.bill-overview .bill-section-sidebar {
+    background: #242a30 !important;
+    color: lightgray !important;
+    padding: 20px 95px 0 95px !important;
 }
 
 .bill-section table th:last-child,

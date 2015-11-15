@@ -31,11 +31,5 @@ namespace Sky
         {
             new PackageBill(new[] { new Subscription("tv", "Variety with Movies HD", new Money(50M)) }, null);
         }
-
-        [TestMethod]
-        public void BreakdownTest()
-        {
-            Assert.Fail();
-        }
     }
 }

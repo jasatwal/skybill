@@ -52,11 +52,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Billing\CallChargesStatisticsTests.cs" />
-    <Compile Include="Billing\CostingsBreakdownTests.cs" />
+    <Compile Include="Billing\Statistics\CallChargesStatisticsTests.cs" />
+    <Compile Include="Billing\BillCostingsTests.cs" />
     <Compile Include="Billing\CallChargesBillTests.cs" />
     <Compile Include="Billing\CallChargeTests.cs" />
-    <Compile Include="Billing\CustomerBillTests.cs" />
+    <Compile Include="Billing\Statistics\SkyStoreStatisticsTests.cs" />
     <Compile Include="MoneyTests.cs" />
     <Compile Include="PackageTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

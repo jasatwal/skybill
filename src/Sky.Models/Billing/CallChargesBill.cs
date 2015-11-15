@@ -26,13 +26,5 @@ namespace Sky.Billing
 
             costings = new BillCostings(calls.Sum(), total);
         }
-
-        //public ChargeBreakdown Breakdown()
-        //{
-        //    return new ChargeBreakdown(
-        //        "Call Charges",
-        //        total,
-        //        new ChargeBreakdownCategory("Calls", calls));
-        //}
     }
 }

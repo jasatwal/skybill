@@ -1,23 +1,14 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Sky.Billing;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Sky.Billing
+namespace Sky.Billing.Statistics
 {
-    [TestClass()]
+    [TestClass]
     public class CallChargesStatisticsTests
     {
-        [TestMethod()]
-        public void CallChargesStatisticsTest()
-        {
-            Assert.Fail();
-        }
 
-        [TestMethod()]
+        [TestMethod]
         public void GetCalledFrequencyTest()
         {
             // Arrange

@@ -2,7 +2,7 @@
 
 namespace Sky.Billing
 {
-    public class SkyStore : IBill
+    public class SkyStoreBill : IBill
     {
         private readonly IEnumerable<SkyStorePurchase> rentals;
         private readonly IEnumerable<SkyStorePurchase> buyAndKeep;
@@ -23,7 +23,7 @@ namespace Sky.Billing
             get { return costings; }
         }
 
-        public SkyStore(IEnumerable<SkyStorePurchase> rentals, IEnumerable<SkyStorePurchase> buyAndKeep, Money total)
+        public SkyStoreBill(IEnumerable<SkyStorePurchase> rentals, IEnumerable<SkyStorePurchase> buyAndKeep, Money total)
         {
             Check.Argument.IsNotNull(rentals, nameof(rentals));
             Check.Argument.IsNotNull(buyAndKeep, nameof(buyAndKeep));
@@ -33,14 +33,5 @@ namespace Sky.Billing
 
             costings = new BillCostings(rentals.Sum().Add(buyAndKeep.Sum()), total);
         }
-
-        //public ChargeBreakdown Breakdown()
-        //{
-        //    return new ChargeBreakdown(
-        //        "Sky Store",
-        //        total,
-        //        new ChargeBreakdownCategory("Rentals", rentals),
-        //        new ChargeBreakdownCategory("Buy and keep", BuyAndKeep));
-        //}
     }
 }

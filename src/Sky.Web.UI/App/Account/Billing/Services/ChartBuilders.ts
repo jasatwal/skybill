@@ -62,7 +62,20 @@
         }
 
         public build(): Array<Directives.IMorrisChart> {
-            return null;
+            var data = [];
+            for (var key in this.value.SkyStoreChargesValue) {
+                var entry = this.value.SkyStoreChargesValue[key];
+                data.push({
+                    value: entry.Value,
+                    label: entry.Name
+                });
+            }
+
+            return [{
+                name: "Sky store charges",
+                data: data,
+                formatter: moneyFormatter
+            }];
         }
     }
 }

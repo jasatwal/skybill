@@ -4,9 +4,15 @@
         Number: string;
     }
 
+    export interface ISkyStoreChargeValue {
+        Name: string;
+        Value: number;
+    }
+
     export interface IBillWithStatistics {
         Bill: Bill;
         CalledFrequency: Array<ICalledFrequency>;
+        SkyStoreChargesValue: Array<ISkyStoreChargeValue>;
     }
 
     export class BillingService {
@@ -18,7 +24,7 @@
         }
 
         public getBillWithStatistics(): ng.IPromise<IBillWithStatistics> {
-            return this.http.post<IBillWithStatistics>("/Account/GetBill", null)
+            return this.http.post<IBillWithStatistics>("/Account/GetBillWithStatistics", null)
                 .then((response: ng.IHttpPromiseCallbackArg<IBillWithStatistics>) => {
                     return response.data;
                 });
