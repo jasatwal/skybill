@@ -39,6 +39,7 @@ namespace Sky.Web.UI
                 "~/Scripts/morris.js",
                 "~/App/Account/Billing/Filters/*.js",
                 "~/App/Account/Billing/Directives/*.js",
+                "~/App/Account/Billing/Services/*.js",
                 "~/App/Account/Billing/Controllers/*.js",
                 "~/App/Account/Billing/App.js"));
         }

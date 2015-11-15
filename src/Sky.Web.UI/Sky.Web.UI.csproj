@@ -281,6 +281,9 @@
     <TypeScriptCompile Include="App\Account\Billing\Interfaces.ts" />
     <TypeScriptCompile Include="App\Account\Billing\Filters\BreakdownFilter.ts" />
     <TypeScriptCompile Include="App\Account\Billing\Filters\CostFilter.ts" />
+    <TypeScriptCompile Include="App\Account\Billing\Services\BillingService.ts" />
+    <TypeScriptCompile Include="App\Account\Billing\Services\BillSectionService.ts" />
+    <TypeScriptCompile Include="App\Account\Billing\Services\ChartBuilders.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-cookies.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-mocks.d.ts" />

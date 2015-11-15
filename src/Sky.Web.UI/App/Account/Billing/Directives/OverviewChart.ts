@@ -2,14 +2,14 @@
     // Don't have DefinatelyType file for Morris.js
     declare var Morris: any;  
 
-    export interface IOverviewChart {
+    export interface IMorrisChart {
         name: string;
         data: Array<any>;
         formatter?: (value: any) => any;
     }
 
     interface IOverviewChartScope extends ng.IScope {
-        overviewChart: IOverviewChart;
+        overviewChart: IMorrisChart;
     }
 
     export function overviewChart(): ng.IDirective {
@@ -18,7 +18,7 @@
                 overviewChart: "="
             },
             link: (scope: IOverviewChartScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes) => {
-                scope.$watch("overviewChart", (newVal: IOverviewChart, oldVal: IOverviewChart, scope: ng.IScope) => {
+                scope.$watch("overviewChart", (newVal: IMorrisChart, oldVal: IMorrisChart, scope: ng.IScope) => {
                     if (newVal) {
                         var chart = Morris.Donut({
                             element: element.get(0),
