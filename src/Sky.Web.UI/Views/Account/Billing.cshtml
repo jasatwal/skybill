@@ -52,7 +52,10 @@
             </table>
         </div>
         <aside class="bill-section-sidebar">
-            <div chart="chartConfig" ng-repeat="chartConfig in section.charts" class="chart"></div>
+            <div class="chart" ng-repeat="chartConfig in section.charts">
+                <h4 class="chart-title">{{chartConfig.name}} <small>{{chartConfig.description}}</small></h4>
+                <div class="chart-content" chart="chartConfig"></div>
+            </div>
         </aside>
     </section>
 </article>

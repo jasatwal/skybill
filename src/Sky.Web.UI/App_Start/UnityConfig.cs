@@ -1,10 +1,8 @@
-using System;
 using Microsoft.Practices.Unity;
-using Microsoft.Practices.Unity.Configuration;
-using Sky.Infrastructure.Billing;
-using Sky.Infrastructure;
-using Sky.Billing;
 using Newtonsoft.Json;
+using Sky.Billing;
+using Sky.Infrastructure.Billing;
+using System;
 
 namespace Sky.Web.UI.App_Start
 {

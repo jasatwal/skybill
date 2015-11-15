@@ -30,30 +30,34 @@
                 template: "subscriptionsTemplate"
             });
 
-            sections.push({
-                name: "Telephone usage charges",
-                chargesGroups: [{
+            if (bill.CallCharges) {
+                sections.push({
                     name: "Telephone usage charges",
-                    charges: bill.CallCharges.Calls
-                }],
-                costings: bill.CallCharges.Costings,
-                charts: callChargesChartsBuilder.build(),
-                template: "callChargesTemplate"
-            });
-
-            sections.push({
-                name: "Sky store charges",
-                chargesGroups: [{
-                    name: "Rentals",
-                    charges: bill.SkyStore.Rentals
-                }, {
-                    name: "Buy and keep",
-                    charges: bill.SkyStore.BuyAndKeep
+                    chargesGroups: [{
+                        name: "Telephone usage charges",
+                        charges: bill.CallCharges.Calls
                     }],
-                costings: bill.SkyStore.Costings,
-                charts: skyStoreChartsBuilder.build(),
-                template: "skyStoreTemplate"
-            });
+                    costings: bill.CallCharges.Costings,
+                    charts: callChargesChartsBuilder.build(),
+                    template: "callChargesTemplate"
+                });
+            }
+
+            if (bill.SkyStore) {
+                sections.push({
+                    name: "Sky store charges",
+                    chargesGroups: [{
+                        name: "Rentals",
+                        charges: bill.SkyStore.Rentals
+                    }, {
+                            name: "Buy and keep",
+                            charges: bill.SkyStore.BuyAndKeep
+                        }],
+                    costings: bill.SkyStore.Costings,
+                    charts: skyStoreChartsBuilder.build(),
+                    template: "skyStoreTemplate"
+                });
+            }
 
             return sections;
         }

@@ -65,8 +65,8 @@ namespace Sky.Web.UI.Controllers
             var vm = new BillWithStatisticsViewModel
             {
                 Bill = bill,
-                CalledFrequency = bill.CallCharges.GetCalledFrequency(),
-                SkyStoreChargesValue = bill.SkyStore.GetSkyStoreChargesValue()
+                CalledFrequency = bill.GetCalledFrequency(),
+                SkyStoreChargesValue = bill.GetSkyStoreChargesValue()
             };
 
             return Json(vm, jsonConverters);

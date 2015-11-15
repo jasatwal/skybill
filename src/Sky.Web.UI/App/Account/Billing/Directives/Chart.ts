@@ -4,6 +4,7 @@
 
     export interface IMorrisChart {
         name: string;
+        description?: string;
         data: Array<any>;
         formatter?: (value: any) => any;
     }

@@ -39,6 +39,10 @@
       <HintPath>..\..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -70,6 +74,10 @@
     <ProjectReference Include="..\..\src\Sky.Models\Sky.Models.csproj">
       <Project>{6f4a1543-2f44-43d9-a96b-1c40229b2bcb}</Project>
       <Name>Sky.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Sky.Web\Sky.Web.csproj">
+      <Project>{92197f76-006f-4de0-8b32-5040a2ebae54}</Project>
+      <Name>Sky.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

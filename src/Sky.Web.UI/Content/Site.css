@@ -23,8 +23,17 @@ textarea {
     max-width: 280px;
 }
 
-.chart {
+.chart .chart-title small {
+    margin-top: 5px;
+    display: block;
+}
+
+.chart-content {
     height: 230px;
+}
+
+.bill-overview {
+    min-height: 270px !important;
 }
 
 .bill-overview dl {
@@ -68,7 +77,7 @@ textarea {
     border-radius: 4px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
     border: 1px solid #ddd;
-    min-height: 270px;
+    min-height: 320px;
 }
 
 .bill-section .bill-section-content {
@@ -87,5 +96,5 @@ textarea {
     bottom: 0;
     background: #f5f5f5;
     width: 300px;
-    padding: 20px 0;
+    padding: 20px 10px;
 }

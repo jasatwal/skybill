@@ -52,6 +52,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Billing\BillTests.cs" />
     <Compile Include="Billing\Statistics\CallChargesStatisticsTests.cs" />
     <Compile Include="Billing\BillCostingsTests.cs" />
     <Compile Include="Billing\CallChargesBillTests.cs" />

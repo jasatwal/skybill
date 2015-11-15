@@ -56,7 +56,7 @@
     export interface Bill {
         Statement: IStatement;
         Package: IPackageBill;
-        CallCharges: ICallChargesBill;
-        SkyStore: ISkyStoreBill;
+        CallCharges?: ICallChargesBill;
+        SkyStore?: ISkyStoreBill;
     }
 }

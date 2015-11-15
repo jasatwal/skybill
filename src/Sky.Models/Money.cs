@@ -20,11 +20,15 @@ namespace Sky
 
         public Money Add(Money money)
         {
+            Check.Argument.IsNotNull(money, nameof(money));
+
             return new Money(Value + money.Value);
         }
 
         public Money Subtract(Money money)
         {
+            Check.Argument.IsNotNull(money, nameof(money));
+
             return new Money(Value - money.Value);
         }
 

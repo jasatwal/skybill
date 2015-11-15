@@ -1,6 +1,7 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Newtonsoft.Json;
+using Sky.Web.JsonConverters;
 using System.Threading.Tasks;
 
 namespace Sky.Infrastructure.Billing
@@ -8,29 +9,24 @@ namespace Sky.Infrastructure.Billing
     [TestClass]
     public class BillingServiceTests
     {
-        //[TestMethod]
-        //public async Task Find_MapValidJsonObject_ShouldPass()
-        //{
-        //    // Arrange
-        //    var client = new Mock<IHttpClient>();
-        //    var jsonObject = SampleData.GenerateValidJsonObject();
-        //    client.Setup(x => x.Get<RootObjectDto>(It.IsAny<string>())).Returns(Task.FromResult(jsonObject));
+        [TestMethod]
+        public async Task Find_JsonBillWithoutCallCharges_ShouldReturnBillWithNullCallChargesAndNotNullSkyStore()
+        {
+            // Arrange
+            var client = new Mock<IHttpClient>();
+            client.Setup(x => x.GetString(It.IsAny<string>())).Returns(Task.FromResult(SampleData.BillWithoutCallCharges()));
+            var converters = new JsonConverter[] { new MoneyJsonConverter(), new SkyStoreMovieJsonConverter(), new TelephoneNumberJsonConverter() };
 
-        //    var service = new BillingService(client.Object, "http://some-end-point");
-        //    var accountNumber = new CustomerAccountNumber("1234567890");
+            var service = new BillingService(client.Object, converters, "http://some-end-point");
+            var accountNumber = new CustomerAccountNumber("1234567890");
 
-        //    // Act
-        //    var bill = await service.Find(accountNumber);
+            // Act
+            var bill = await service.Find(accountNumber);
 
-        //    // Assert
-        //    Assert.IsNotNull(bill);
-        //    Assert.AreEqual(jsonObject.statement.generated, bill.Statement.Generated);
-        //    Assert.AreEqual(jsonObject.statement.due, bill.Statement.Due);
-        //    Assert.AreEqual(jsonObject.statement.period.from, bill.Statement.Period.From);
-        //    Assert.AreEqual(jsonObject.statement.period.to, bill.Statement.Period.To);
-            
-        //}
-
-
+            // Assert
+            Assert.IsNotNull(bill);
+            Assert.IsNull(bill.CallCharges);
+            Assert.IsNotNull(bill.SkyStore);
+        }
     }
 }

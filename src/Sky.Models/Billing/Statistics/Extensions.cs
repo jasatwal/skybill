@@ -1,17 +1,24 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Sky.Billing.Statistics
 {
     public static class Extensions
     {
-        public static IEnumerable<CalledFrequency> GetCalledFrequency(this CallChargesBill bill)
+        public static IEnumerable<CalledFrequency> GetCalledFrequency(this Bill bill)
         {
-            return new CallChargesStatistics(bill).GetCalledFrequency();
+            if (bill.CallCharges == null)
+                return Enumerable.Empty<CalledFrequency>();
+
+            return new CallChargesStatistics(bill.CallCharges).GetCalledFrequency();
         }
 
-        public static IEnumerable<SkyStoreChargeValue> GetSkyStoreChargesValue(this SkyStoreBill bill)
+        public static IEnumerable<SkyStoreChargeValue> GetSkyStoreChargesValue(this Bill bill)
         {
-            return new SkyStoreStatistics(bill).GetChargesValue();
+            if (bill.SkyStore == null)
+                return Enumerable.Empty<SkyStoreChargeValue>();
+
+            return new SkyStoreStatistics(bill.SkyStore).GetChargesValue();
         }
     }
 }

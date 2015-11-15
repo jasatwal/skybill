@@ -13,6 +13,12 @@
         return value;
     }
 
+    export function timesFormatter(value: any) {
+        if (value) {
+            return "x" + value;
+        }
+    }
+
     export class PackageChartsBuilder implements IChartBuilder {
         constructor(private bill: Bill) {
         }
@@ -30,6 +36,7 @@
 
             return [{
                 name: "Subscriptions", 
+                description: "View cost of subscription charges.",
                 data: data,
                 formatter: moneyFormatter
             }]
@@ -51,8 +58,10 @@
             }
 
             return [{
-                name: "Called frequency",
-                data: data
+                name: "Regularly called numbers",
+                description: "View numbers you call the most.",
+                data: data,
+                formatter: timesFormatter
             }];
         }
     }
@@ -73,6 +82,7 @@
 
             return [{
                 name: "Sky store charges",
+                description: "View cost of rentals in relation to buy and keep purchases.",
                 data: data,
                 formatter: moneyFormatter
             }];

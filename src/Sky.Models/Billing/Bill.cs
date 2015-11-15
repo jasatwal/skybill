@@ -41,15 +41,17 @@
         {
             Check.Argument.IsNotNull(statement, nameof(statement));
             Check.Argument.IsNotNull(package, nameof(package));
-            Check.Argument.IsNotNull(callCharges, nameof(callCharges));
-            Check.Argument.IsNotNull(skyStore, nameof(skyStore));
 
             this.statement = statement;
             this.package = package;
             this.callCharges = callCharges;
             this.skyStore = skyStore;
 
-            costings = new BillCostings(package.Costings.Total.Add(callCharges.Costings.Total).Add(skyStore.Costings.Total), total);
+            costings = new BillCostings(
+                package.Costings.Total
+                    .Add(callCharges?.Costings.Total ?? Money.Zero)
+                    .Add(skyStore?.Costings.Total ?? Money.Zero), 
+                total);
         }
     }
 }
